@@ -33,25 +33,39 @@ public class HotelReservationSystem {
 		return added;
 	}
 	
-	public List<Hotel> findCheapestHotel(LocalDate startDate, LocalDate endDate) {
+	public List<Hotel> findCheapestHotel(LocalDate startDate, LocalDate endDate, CustomerType type) {
 		int noOfDays=startDate.compareTo(endDate);
 		
 		final int weekdayCount=weekdayCounter(startDate, endDate);
 		final int weekendCount=weekendCounter(startDate, endDate);
 		
-		int cheapestPrice=listOfHotels.stream()
+		int cheapestPrice;
+		List<Hotel> cheapestHotels;
+		if(type==CustomerType.REGULAR_CUSTOMER ) {
+			cheapestPrice=listOfHotels.stream()
 						.mapToInt(hotel -> (int)(hotel.getWeekdayRates()*weekdayCount) + (int)(hotel.getWeekendRates()*weekendCount))
 						.min().orElse(Integer.MAX_VALUE);
+			cheapestHotels=listOfHotels.stream()
+					.filter(hotel -> hotel.getWeekdayRates()*weekdayCount +(hotel.getWeekendRates()*weekendCount) == cheapestPrice)
+					.collect(Collectors.toList());
+		}
+		else {
+			cheapestPrice=listOfHotels.stream()
+					.mapToInt(hotel -> (int)(hotel.getWeekdayRewardRates()*weekdayCount) + (int)(hotel.getWeekendRewardRates()*weekendCount))
+					.min().orElse(Integer.MAX_VALUE);
+			
+			cheapestHotels=listOfHotels.stream()
+					.filter(hotel -> hotel.getWeekdayRewardRates()*weekdayCount +(hotel.getWeekendRewardRates()*weekendCount) == cheapestPrice)
+					.collect(Collectors.toList());
+		}
 		
-		List<Hotel> cheapestHotels=listOfHotels.stream()
-									.filter(hotel -> hotel.getWeekdayRates()*weekdayCount +(hotel.getWeekendRates()*weekendCount) == cheapestPrice)
-									.collect(Collectors.toList());
+		
 		return cheapestHotels;
 	}
 	
-	public Hotel findBestCheapHotel(LocalDate startDate, LocalDate endDate) {
+	public Hotel findBestCheapHotel(LocalDate startDate, LocalDate endDate, CustomerType type) {
 		
-		List<Hotel> cheapestHotels= findCheapestHotel(startDate, endDate);
+		List<Hotel> cheapestHotels= findCheapestHotel(startDate, endDate, type);
 		
 		Hotel bestHotel=cheapestHotels.stream()
 						.sorted((hotel1, hotel2) -> String.valueOf(hotel2.getRating()).compareTo(String.valueOf(hotel1.getRating())))
@@ -61,7 +75,7 @@ public class HotelReservationSystem {
 		return bestHotel;
 	}
 	
-	public Hotel findBestHotel(LocalDate startDate, LocalDate endDate) {
+	public Hotel findBestHotel(LocalDate startDate, LocalDate endDate, CustomerType type) {
 		int noOfDays=startDate.compareTo(endDate);
 		int weekdayCount=weekdayCounter(startDate, endDate);
 		int weekendCount=weekendCounter(startDate, endDate);
@@ -71,7 +85,11 @@ public class HotelReservationSystem {
 				.findFirst()
 				.orElse(null);
 		
-		int price=(int)bestHotel.getWeekdayRates()*weekdayCount +(int) bestHotel.getWeekendRates()*weekendCount;
+		int price;
+		if(type==CustomerType.REGULAR_CUSTOMER)
+			price=(int)bestHotel.getWeekdayRates()*weekdayCount +(int) bestHotel.getWeekendRates()*weekendCount;
+		else
+			price=(int)bestHotel.getWeekdayRewardRates()*weekdayCount +(int) bestHotel.getWeekendRewardRates()*weekendCount;
 		
 		return bestHotel;
 	}
