@@ -9,9 +9,12 @@ import com.bridgelabz.hotelreservationsystem.Hotel;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Assert;
 
@@ -33,11 +36,12 @@ public class HotelReservationTest {
     	listOfHotels.addHotel(hotel1);
     	listOfHotels.addHotel(hotel2);
     	listOfHotels.addHotel(hotel3);
-    	LocalDateTime date1=LocalDateTime.now();
-    	LocalDateTime date2=date1.plusDays(2);
-    	Hotel cheapest=listOfHotels.findCheapestHotel(date1,date2);
+    	LocalDate date1=LocalDate.of(2020, Month.SEPTEMBER, 11);
+    	LocalDate date2=LocalDate.of(2020, Month.SEPTEMBER,12);
+    	List<Hotel> cheapestHotels=listOfHotels.findCheapestHotel(date1,date2);
     	
-    	Assert.assertEquals("Ridgewood",cheapest.getNameOfHotel());
+    	Assert.assertEquals("Lakewood",cheapestHotels.get(0).getNameOfHotel());
+    	Assert.assertEquals("Ridgewood",cheapestHotels.get(1).getNameOfHotel());
     		
     	
     }

@@ -1,11 +1,16 @@
 package com.bridgelabz.hotelreservationsystem;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class HotelReservationSystem {
 	
@@ -26,11 +31,28 @@ public class HotelReservationSystem {
 		return added;
 	}
 	
-	public Hotel findCheapestHotel(LocalDateTime startDate, LocalDateTime endDate) {
+	public List<Hotel> findCheapestHotel(LocalDate startDate, LocalDate endDate) {
 		int noOfDays=startDate.compareTo(endDate);
-		double min=Double.MAX_VALUE;
-		Hotel cheapest=listOfHotels.stream().min((hotel1, hotel2) -> (int)hotel1.getRates()-(int)hotel2.getRates()).orElse(null);	
-		return cheapest;
+		int weekdayCounter=0;
+		int weekendCounter=0;
+		
+		for(LocalDate dateCounter=startDate; startDate.isBefore(endDate); dateCounter.plusDays(1) ) {
+			if(dateCounter.getDayOfWeek()==DayOfWeek.SATURDAY || dateCounter.getDayOfWeek()==DayOfWeek.SUNDAY)
+				weekendCounter++;
+			else
+				weekdayCounter++;
+		}
+		
+		final int weekdayCount=weekdayCounter;
+		final int weekendCount=weekendCounter;
+		int cheapestPrice=listOfHotels.stream()
+						.mapToInt(hotel -> (int)(hotel.getWeekdayRates()*weekdayCount) + (int)(hotel.getWeekendRates()*weekendCount))
+						.min().orElse(Integer.MAX_VALUE);
+		
+		List<Hotel> cheapestHotels=listOfHotels.stream()
+									.filter(hotel -> hotel.getWeekdayRates()*weekdayCount +(hotel.getWeekendRates()*weekendCount) == cheapestPrice)
+									.collect(Collectors.toList());
+		return cheapestHotels;
 	}
 
 }
