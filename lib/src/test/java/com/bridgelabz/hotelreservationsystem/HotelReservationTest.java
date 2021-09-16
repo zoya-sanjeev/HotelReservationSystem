@@ -58,10 +58,21 @@ public class HotelReservationTest {
     	LocalDate date1=LocalDate.of(2020, Month.SEPTEMBER, 11);
     	LocalDate date2=LocalDate.of(2020, Month.SEPTEMBER, 12);
     	
-    	List<Hotel> cheapestHotels=listOfHotels.findCheapestHotel(date1,date2);	
-    	
     	Hotel bestHotel=listOfHotels.findBestCheapHotel(date1,date2);
     	Assert.assertEquals("Bridgewood",bestHotel.getNameOfHotel());
+    	
+    }
+    
+    @Test public void findBestHotel_listOfHotels_highestRatedHotel() {
+    	listOfHotels.addHotel(hotel1);
+    	listOfHotels.addHotel(hotel2);
+    	listOfHotels.addHotel(hotel3);
+    	
+    	LocalDate date1=LocalDate.of(2020, Month.SEPTEMBER, 11);
+    	LocalDate date2=LocalDate.of(2020, Month.SEPTEMBER, 12);	
+    	
+    	Hotel bestHotel=listOfHotels.findBestHotel(date1,date2);
+    	Assert.assertEquals("Ridgewood",bestHotel.getNameOfHotel());
     	
     }
     
