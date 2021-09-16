@@ -17,7 +17,7 @@ import org.junit.Assert;
 
 public class HotelReservationTest {
     @Test public void addHotel_correctDetailsOfHotel_True(){
-    	ListOfHotels listOfHotels=new ListOfHotels();
+    	HotelReservationSystem listOfHotels=new HotelReservationSystem();
     	Hotel hotel=new Hotel("Lakewood", 120.0);
     	boolean added=listOfHotels.addHotel(hotel);
     	Assert.assertEquals(added,true);
@@ -26,7 +26,7 @@ public class HotelReservationTest {
     }
     
     @Test public void findCheapestHotel_differentHotelsWithDifferentRates_CheapestHotel() {
-    	ListOfHotels listOfHotels=new ListOfHotels();
+    	HotelReservationSystem listOfHotels=new HotelReservationSystem();
     	Hotel hotel1=new Hotel("Lakewood", 110.0);
     	Hotel hotel2=new Hotel("Bridgewood", 90.0);
     	Hotel hotel3=new Hotel("Ridgewood", 80.0);

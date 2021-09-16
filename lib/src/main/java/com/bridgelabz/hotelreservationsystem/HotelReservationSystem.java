@@ -7,9 +7,13 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.LinkedList;
 
-public class ListOfHotels {
+public class HotelReservationSystem {
 	
-	ArrayList<Hotel> listOfHotels= new ArrayList<>();
+	ArrayList<Hotel> listOfHotels;
+	public HotelReservationSystem() {
+		listOfHotels=new ArrayList<>();
+	}
+	
 	
 	public Hotel createHotel() {
 		Hotel newHotel = new Hotel("Lakewood", 120.0);
