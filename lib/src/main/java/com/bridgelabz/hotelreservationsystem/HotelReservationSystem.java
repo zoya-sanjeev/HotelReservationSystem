@@ -34,6 +34,10 @@ public class HotelReservationSystem {
 		return Pattern.matches(dateRegex, date);
 	}
 	
+	public static boolean validateCustomerType(String customerType) {
+		String customerTypeRegex="^(REGULAR_CUSTOMER)|(REWARDS_CUSTOMER)$";
+		return Pattern.matches(customerTypeRegex, customerType);
+	}
 	
 	public boolean addHotel(Hotel newHotel) {		
 		boolean added=listOfHotels.add(newHotel);
