@@ -44,9 +44,16 @@ public class HotelReservationSystem {
 		
 	}
 	
-	public static boolean validateCustomerType(String customerType) {
-		String customerTypeRegex="^(REGULAR_CUSTOMER)|(REWARDS_CUSTOMER)$";
-		return Pattern.matches(customerTypeRegex, customerType);
+	public static boolean validateCustomerType(String customerType) throws HotelReservationException {
+		try {
+			String customerTypeRegex="^(REGULAR_CUSTOMER)|(REWARDS_CUSTOMER)$";
+			if(Pattern.matches(customerTypeRegex, customerType))
+				return true;
+			else
+				throw new HotelReservationException("Enter Customer type in proper format",ExceptionType.CUTOMER_TYPE_INVALID);
+		}catch(NullPointerException e) {
+			throw new HotelReservationException("Enter Customer type",ExceptionType.CUSTOMER_TYPE_NULL);
+		}
 	}
 	
 	public boolean addHotel(Hotel newHotel) {		
