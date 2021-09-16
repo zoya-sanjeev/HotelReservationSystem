@@ -3,6 +3,7 @@ package com.bridgelabz.hotelreservationsystem;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
@@ -35,13 +36,17 @@ public class HotelReservationSystem {
 		int noOfDays=startDate.compareTo(endDate);
 		int weekdayCounter=0;
 		int weekendCounter=0;
-		
-		for(LocalDate dateCounter=startDate; startDate.isBefore(endDate); dateCounter.plusDays(1) ) {
+	
+		for(LocalDate dateCounter=startDate; dateCounter.isBefore(endDate); dateCounter=dateCounter.plusDays(1) ) {
 			if(dateCounter.getDayOfWeek()==DayOfWeek.SATURDAY || dateCounter.getDayOfWeek()==DayOfWeek.SUNDAY)
 				weekendCounter++;
 			else
 				weekdayCounter++;
 		}
+		if(endDate.getDayOfWeek()==DayOfWeek.SATURDAY ||endDate.getDayOfWeek()==DayOfWeek.SUNDAY)
+			weekendCounter++;
+		else
+			weekdayCounter++;
 		
 		final int weekdayCount=weekdayCounter;
 		final int weekendCount=weekendCounter;
@@ -64,5 +69,6 @@ public class HotelReservationSystem {
 		
 		return bestHotel;
 	}
+	
 
 }
