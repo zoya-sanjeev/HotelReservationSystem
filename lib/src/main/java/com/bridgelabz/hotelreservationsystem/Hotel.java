@@ -10,6 +10,7 @@ public class Hotel {
     private double weekdayRewardRates;
     private double weekendRewardRates;
     private int rating;
+    public CustomerType type;
 
 	public Hotel(String name, double weekdayRates, double weekendRates,double weekdayRewardRates,double weekendRewardRates, int rating) {
 		this.nameOfHotel=name;
