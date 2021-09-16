@@ -20,4 +20,11 @@ public class HotelReservationTest {
     	
     	
     }
+    
+    @Test public void findCheapestHotel_differentHotelsWithDifferentRates_CheapestHotel() {
+    	ListOfHotels listOfHotels=new ListOfHotels();
+    	Hotel hotel1=new Hotel("Lakewood", 110.0);
+    	Hotel hotel2=new Hotel("Bridgewood", 90.0);
+    	Hotel hotel3=new Hotel("Ridgewood", 80.0);
+    }
 }

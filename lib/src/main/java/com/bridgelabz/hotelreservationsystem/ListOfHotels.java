@@ -1,6 +1,7 @@
 package com.bridgelabz.hotelreservationsystem;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -23,12 +24,8 @@ public class ListOfHotels {
 		double noOfDays=endDate.compareTo(startDate);
 		double min=Double.MAX_VALUE;
 		Hotel cheapest=null;
-		for(Hotel hotel : listOfHotels) {
-			if(hotel.getRates()*noOfDays<min) {
-				min=hotel.getRates()*noOfDays;
-				cheapest=hotel;
-			}
-		}
+		cheapest=listOfHotels.stream().min((hotel1, hotel2) -> (int)hotel1.getRates()-(int)hotel2.getRates()).orElse(null);
+	
 		return cheapest;
 	}
 
