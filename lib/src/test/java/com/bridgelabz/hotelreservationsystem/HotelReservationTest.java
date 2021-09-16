@@ -90,8 +90,12 @@ public class HotelReservationTest {
     
     @Test public void validateDate_correctDate_True(){
     	String date="2020-09-11";
-    	boolean result=HotelReservationSystem.validateDate(date);
-    	Assert.assertEquals(true,result);
+    	try {
+    		boolean result=HotelReservationSystem.validateDate(date);
+    		Assert.assertEquals(true,result);
+    	}catch(HotelReservationException e) {
+    		
+    	}
     }
     @Test public void validateDate_nullDate_True(){
     	String date=null;
@@ -110,6 +114,34 @@ public class HotelReservationTest {
     	}
     }
     
-
+    @Test public void validateCustomerType_validCustomerType_True() {
+    	String customerType="REWARDS_CUSTOMER";
+    	try {
+    		boolean result=HotelReservationSystem.validateCustomerType(customerType);
+    		Assert.assertEquals(true, result);
+    	}catch(HotelReservationException e) {
+    		
+    	}
+    }
+    
+    @Test public void validateCustomerType_nullCustomerType_True() {
+    	String customerType=null;
+    	try {
+    		boolean result=HotelReservationSystem.validateCustomerType(customerType);
+    		
+    	}catch(HotelReservationException e) {
+    		Assert.assertEquals(HotelReservationException.ExceptionType.CUSTOMER_TYPE_NULL, e.type);
+    	}
+    }
+    
+    @Test public void validateCustomerType_invalidCustomerType_True() {
+    	String customerType="hduhuas";
+    	try {
+    		boolean result=HotelReservationSystem.validateCustomerType(customerType);
+    		
+    	}catch(HotelReservationException e) {
+    		Assert.assertEquals(HotelReservationException.ExceptionType.CUTOMER_TYPE_INVALID, e.type);
+    	}
+    }
     
 }
