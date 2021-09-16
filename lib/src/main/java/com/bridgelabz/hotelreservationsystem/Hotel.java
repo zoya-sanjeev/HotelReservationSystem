@@ -8,6 +8,12 @@ public class Hotel {
     private double weekdayRates;
     private double weekendRates;
     
+    public Hotel(String name, double weekdayRates, double weekendRates) {
+		this.nameOfHotel=name;
+		this.weekdayRates=weekdayRates;
+		this.weekendRates=weekendRates;
+	}
+    
     public String getNameOfHotel() {
 		return nameOfHotel;
 	}
@@ -26,6 +32,7 @@ public class Hotel {
 	public void setWeekendRates(double weekendRates) {
 		this.weekendRates = weekendRates;
 	}
+	
 	
     
 }
