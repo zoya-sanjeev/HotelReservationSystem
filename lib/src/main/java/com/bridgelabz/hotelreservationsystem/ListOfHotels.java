@@ -1,6 +1,8 @@
 package com.bridgelabz.hotelreservationsystem;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.LinkedList;
@@ -20,7 +22,7 @@ public class ListOfHotels {
 		return added;
 	}
 	
-	public Hotel findCheapestHotel(Date startDate, Date endDate) {
+	public Hotel findCheapestHotel(LocalDateTime startDate, LocalDateTime endDate) {
 		double noOfDays=endDate.compareTo(startDate);
 		double min=Double.MAX_VALUE;
 		Hotel cheapest=null;

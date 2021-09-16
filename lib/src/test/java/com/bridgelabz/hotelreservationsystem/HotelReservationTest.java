@@ -9,6 +9,7 @@ import com.bridgelabz.hotelreservationsystem.Hotel;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -29,14 +30,15 @@ public class HotelReservationTest {
     	Hotel hotel1=new Hotel("Lakewood", 110.0);
     	Hotel hotel2=new Hotel("Bridgewood", 90.0);
     	Hotel hotel3=new Hotel("Ridgewood", 80.0);
-    	Calendar calendar1=Calendar.getInstance();
-    	calendar1.set(2021, 12,12);
-    	Calendar calendar2=Calendar.getInstance();
-    	calendar2.set(2021, 12,14);
-    	Hotel cheapest=listOfHotels.findCheapestHotel(calendar1.getTime(),calendar2.getTime());
+    	listOfHotels.addHotel(hotel1);
+    	listOfHotels.addHotel(hotel2);
+    	listOfHotels.addHotel(hotel3);
+    	LocalDateTime date1=LocalDateTime.now();
+    	LocalDateTime date2=date1.plusDays(2);
+    	Hotel cheapest=listOfHotels.findCheapestHotel(date1,date2);
     	
-    	Assert.assertEquals(cheapest.getNameOfHotel(),"Rridgewood");
-    	
+    	Assert.assertEquals("Ridgewood",cheapest.getNameOfHotel());
+    		
     	
     }
 }
