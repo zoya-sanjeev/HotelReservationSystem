@@ -88,4 +88,28 @@ public class HotelReservationTest {
     	Assert.assertEquals("Ridgewood",bestHotel.getNameOfHotel());
     }
     
+    @Test public void validateDate_correctDate_True(){
+    	String date="2020-09-11";
+    	boolean result=HotelReservationSystem.validateDate(date);
+    	Assert.assertEquals(true,result);
+    }
+    @Test public void validateDate_nullDate_True(){
+    	String date=null;
+    	try {
+    		boolean result=HotelReservationSystem.validateDate(date);
+    	}catch(HotelReservationException e) {
+    		Assert.assertEquals(HotelReservationException.ExceptionType.DATE_NULL, e.type);
+    	}
+    }
+    @Test public void validateDate_invalidDate_False(){
+    	String date="12-1234-22";
+    	try {
+    		boolean result=HotelReservationSystem.validateDate(date);
+    	}catch(HotelReservationException e) {
+    		Assert.assertEquals(HotelReservationException.ExceptionType.DATE_INVALID, e.type);
+    	}
+    }
+    
+
+    
 }
