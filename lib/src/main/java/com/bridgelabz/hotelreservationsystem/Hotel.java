@@ -5,26 +5,37 @@ package com.bridgelabz.hotelreservationsystem;
 
 public class Hotel {
     private String nameOfHotel;
-    private double rates;
+	private double weekdayRates;
+    private double weekendRates;
 
-	public Hotel(String name, double rates) {
+	public Hotel(String name, double weekdayRates, double weekendRates) {
 		this.nameOfHotel=name;
-		this.rates=rates;
+		this.weekdayRates=weekdayRates;
+		this.weekendRates=weekendRates;
 	}
     
     public String getNameOfHotel() {
 		return nameOfHotel;
 	}
+    
 	public void setNameOfHotel(String nameOfHotel) {
 		this.nameOfHotel = nameOfHotel;
 	}
-
-	public double getRates() {
-		return rates;
+	
+    public double getWeekdayRates() {
+		return weekdayRates;
 	}
 
-	public void setRates(double rates) {
-		this.rates = rates;
+	public void setWeekdayRates(double weekdayRates) {
+		this.weekdayRates = weekdayRates;
+	}
+
+	public double getWeekendRates() {
+		return weekendRates;
+	}
+
+	public void setWeekendRates(double weekendRates) {
+		this.weekendRates = weekendRates;
 	}
 	
     
