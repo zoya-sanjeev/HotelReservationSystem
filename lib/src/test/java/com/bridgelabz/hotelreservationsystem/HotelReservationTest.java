@@ -9,6 +9,9 @@ import com.bridgelabz.hotelreservationsystem.Hotel;
 
 import static org.junit.Assert.*;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.junit.Assert;
 
 public class HotelReservationTest {
@@ -26,5 +29,14 @@ public class HotelReservationTest {
     	Hotel hotel1=new Hotel("Lakewood", 110.0);
     	Hotel hotel2=new Hotel("Bridgewood", 90.0);
     	Hotel hotel3=new Hotel("Ridgewood", 80.0);
+    	Calendar calendar1=Calendar.getInstance();
+    	calendar1.set(2021, 12,12);
+    	Calendar calendar2=Calendar.getInstance();
+    	calendar2.set(2021, 12,14);
+    	Hotel cheapest=listOfHotels.findCheapestHotel(calendar1.getTime(),calendar2.getTime());
+    	
+    	Assert.assertEquals(cheapest.getNameOfHotel(),"Rridgewood");
+    	
+    	
     }
 }
