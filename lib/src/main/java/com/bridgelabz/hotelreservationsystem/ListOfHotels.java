@@ -1,15 +1,21 @@
 package com.bridgelabz.hotelreservationsystem;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ListOfHotels {
 	
-	LinkedList<Hotel> listOfHotels= new LinkedList<>();
+	ArrayList<Hotel> listOfHotels= new ArrayList<>();
 	
-	public void addHotel() {
+	public Hotel createHotel() {
 		Hotel newHotel = new Hotel("Lakewood", 3000.0,5000.0);
-		listOfHotels.add(newHotel);
+		return newHotel;
 		
+	}
+	
+	public boolean addHotel(Hotel newHotel) {		
+		boolean added=listOfHotels.add(newHotel);
+		return added;
 	}
 
 }
