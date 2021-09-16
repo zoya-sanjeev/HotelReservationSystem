@@ -60,12 +60,40 @@ public class HotelReservationSystem {
 		return cheapestHotels;
 	}
 	
-	public Hotel findBestCheapHotel(List<Hotel> cheapestHotels) {
+	public Hotel findBestCheapHotel(LocalDate startDate, LocalDate endDate) {
+		
+		List<Hotel> cheapestHotels= findCheapestHotel(startDate, endDate);
 		
 		Hotel bestHotel=cheapestHotels.stream()
 						.sorted((hotel1, hotel2) -> String.valueOf(hotel2.getRating()).compareTo(String.valueOf(hotel1.getRating())))
 						.findFirst()
 						.orElse(null);
+		
+		return bestHotel;
+	}
+	
+	public Hotel findBestHotel(LocalDate startDate, LocalDate endDate) {
+		int noOfDays=startDate.compareTo(endDate);
+		int weekdayCounter=0;
+		int weekendCounter=0;
+	
+		for(LocalDate dateCounter=startDate; dateCounter.isBefore(endDate); dateCounter=dateCounter.plusDays(1) ) {
+			if(dateCounter.getDayOfWeek()==DayOfWeek.SATURDAY || dateCounter.getDayOfWeek()==DayOfWeek.SUNDAY)
+				weekendCounter++;
+			else
+				weekdayCounter++;
+		}
+		if(endDate.getDayOfWeek()==DayOfWeek.SATURDAY ||endDate.getDayOfWeek()==DayOfWeek.SUNDAY)
+			weekendCounter++;
+		else
+			weekdayCounter++;
+						
+		Hotel bestHotel=listOfHotels.stream()
+				.sorted((hotel1, hotel2) -> String.valueOf(hotel2.getRating()).compareTo(String.valueOf(hotel1.getRating())))
+				.findFirst()
+				.orElse(null);
+		
+		int price=(int)bestHotel.getWeekdayRates()*weekdayCounter +(int) bestHotel.getWeekendRates()*weekendCounter;
 		
 		return bestHotel;
 	}

@@ -60,7 +60,7 @@ public class HotelReservationTest {
     	
     	List<Hotel> cheapestHotels=listOfHotels.findCheapestHotel(date1,date2);	
     	
-    	Hotel bestHotel=listOfHotels.findBestCheapHotel(cheapestHotels);
+    	Hotel bestHotel=listOfHotels.findBestCheapHotel(date1,date2);
     	Assert.assertEquals("Bridgewood",bestHotel.getNameOfHotel());
     	
     }
