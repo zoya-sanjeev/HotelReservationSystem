@@ -14,7 +14,7 @@ import org.junit.Assert;
 public class HotelReservationTest {
     @Test public void addHotel_correctDetailsOfHotel_True(){
     	ListOfHotels listOfHotels=new ListOfHotels();
-    	Hotel hotel=new Hotel("Lakewood", 3000.0,5000.0);
+    	Hotel hotel=new Hotel("Lakewood", 120.0);
     	boolean added=listOfHotels.addHotel(hotel);
     	Assert.assertEquals(added,true);
     	

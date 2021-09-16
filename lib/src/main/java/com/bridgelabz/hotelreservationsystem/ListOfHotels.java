@@ -8,7 +8,7 @@ public class ListOfHotels {
 	ArrayList<Hotel> listOfHotels= new ArrayList<>();
 	
 	public Hotel createHotel() {
-		Hotel newHotel = new Hotel("Lakewood", 3000.0,5000.0);
+		Hotel newHotel = new Hotel("Lakewood", 120.0);
 		return newHotel;
 		
 	}
