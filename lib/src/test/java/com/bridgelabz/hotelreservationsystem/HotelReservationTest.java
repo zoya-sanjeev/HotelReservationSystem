@@ -29,20 +29,24 @@ public class HotelReservationTest {
     }
     
     @Test public void findCheapestHotel_differentHotelsWithDifferentRates_CheapestHotel() {
+    	
     	HotelReservationSystem listOfHotels=new HotelReservationSystem();
+    	
     	Hotel hotel1=new Hotel("Lakewood", 110.0,90.0);
     	Hotel hotel2=new Hotel("Bridgewood", 150.0,50.0);
     	Hotel hotel3=new Hotel("Ridgewood", 220.0,150.0);
+    	
     	listOfHotels.addHotel(hotel1);
     	listOfHotels.addHotel(hotel2);
     	listOfHotels.addHotel(hotel3);
+    	
     	LocalDate date1=LocalDate.of(2020, Month.SEPTEMBER, 11);
     	LocalDate date2=LocalDate.of(2020, Month.SEPTEMBER,12);
-    	List<Hotel> cheapestHotels=listOfHotels.findCheapestHotel(date1,date2);
+    	
+    	List<Hotel> cheapestHotels=listOfHotels.findCheapestHotel(date1,date2);	
     	
     	Assert.assertEquals("Lakewood",cheapestHotels.get(0).getNameOfHotel());
-    	Assert.assertEquals("Ridgewood",cheapestHotels.get(1).getNameOfHotel());
-    		
+    	Assert.assertEquals("Ridgewood",cheapestHotels.get(1).getNameOfHotel());  		
     	
     }
 }
