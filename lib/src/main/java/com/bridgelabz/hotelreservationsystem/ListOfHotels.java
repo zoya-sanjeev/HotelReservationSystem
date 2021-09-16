@@ -1,6 +1,7 @@
 package com.bridgelabz.hotelreservationsystem;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 
 public class ListOfHotels {
@@ -16,6 +17,19 @@ public class ListOfHotels {
 	public boolean addHotel(Hotel newHotel) {		
 		boolean added=listOfHotels.add(newHotel);
 		return added;
+	}
+	
+	public Hotel findCheapestHotel(Date startDate, Date endDate) {
+		double noOfDays=endDate.compareTo(startDate);
+		double min=Double.MAX_VALUE;
+		Hotel cheapest=null;
+		for(Hotel hotel : listOfHotels) {
+			if(hotel.getRates()*noOfDays<min) {
+				min=hotel.getRates()*noOfDays;
+				cheapest=hotel;
+			}
+		}
+		return cheapest;
 	}
 
 }
