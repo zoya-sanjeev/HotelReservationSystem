@@ -24,12 +24,6 @@ public class HotelReservationSystem {
 	public HotelReservationSystem() {
 		listOfHotels=new ArrayList<>();
 	}
-		
-	public Hotel createHotel() {
-		Hotel newHotel = new Hotel("Lakewood", 120.0, 90.0, 80.0, 80.0, 3);
-		return newHotel;
-		
-	}
 	
 	public static boolean validateDate(String date) throws HotelReservationException {
 		try {
