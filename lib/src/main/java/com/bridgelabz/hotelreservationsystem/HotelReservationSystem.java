@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -27,6 +28,12 @@ public class HotelReservationSystem {
 		return newHotel;
 		
 	}
+	
+	public static boolean validateDate(String date) {
+		String dateRegex="^([0-9]{4})[\\-]((0[1-9])|1[012])[\\-]([012][0-9]|[3][01])$";
+		return Pattern.matches(dateRegex, date);
+	}
+	
 	
 	public boolean addHotel(Hotel newHotel) {		
 		boolean added=listOfHotels.add(newHotel);
