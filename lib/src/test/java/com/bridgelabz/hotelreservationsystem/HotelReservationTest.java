@@ -22,14 +22,14 @@ public class HotelReservationTest {
 	
 	HotelReservationSystem listOfHotels=new HotelReservationSystem();
 	
-	Hotel hotel1=new Hotel("Lakewood", 110.0, 90.0, 3);
-	Hotel hotel2=new Hotel("Bridgewood", 150.0, 50.0, 4);
-	Hotel hotel3=new Hotel("Ridgewood", 220.0, 150.0, 5);
+	Hotel hotel1=new Hotel("Lakewood", 110.0, 90.0, 80.0, 80.0, 3);
+	Hotel hotel2=new Hotel("Bridgewood", 150.0, 50.0, 110, 50, 4);
+	Hotel hotel3=new Hotel("Ridgewood", 220.0, 150.0, 100, 40, 5);
 	
     
 	@Test public void addHotel_correctDetailsOfHotel_True(){
     	HotelReservationSystem listOfHotels=new HotelReservationSystem();
-    	Hotel hotel=new Hotel("Lakewood", 110.0, 90.0, 3);
+    	Hotel hotel=new Hotel("Lakewood", 110.0, 90.0, 80.0, 80.0, 3);
     	boolean added=listOfHotels.addHotel(hotel);
     	Assert.assertEquals(added,true);
     	

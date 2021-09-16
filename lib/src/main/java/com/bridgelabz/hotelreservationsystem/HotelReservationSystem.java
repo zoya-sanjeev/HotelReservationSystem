@@ -22,7 +22,7 @@ public class HotelReservationSystem {
 	}
 		
 	public Hotel createHotel() {
-		Hotel newHotel = new Hotel("Lakewood", 120.0, 90.0,3);
+		Hotel newHotel = new Hotel("Lakewood", 120.0, 90.0, 80.0, 80.0, 3);
 		return newHotel;
 		
 	}
