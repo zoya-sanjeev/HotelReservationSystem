@@ -16,7 +16,7 @@ public class HotelReservationSystem {
 	}
 		
 	public Hotel createHotel() {
-		Hotel newHotel = new Hotel("Lakewood", 120.0);
+		Hotel newHotel = new Hotel("Lakewood", 120.0, 90.0);
 		return newHotel;
 		
 	}
@@ -29,9 +29,7 @@ public class HotelReservationSystem {
 	public Hotel findCheapestHotel(LocalDateTime startDate, LocalDateTime endDate) {
 		int noOfDays=startDate.compareTo(endDate);
 		double min=Double.MAX_VALUE;
-		Hotel cheapest=null;
-		cheapest=listOfHotels.stream().min((hotel1, hotel2) -> (int)hotel1.getRates()-(int)hotel2.getRates()).orElse(null);
-	
+		Hotel cheapest=listOfHotels.stream().min((hotel1, hotel2) -> (int)hotel1.getRates()-(int)hotel2.getRates()).orElse(null);	
 		return cheapest;
 	}
 
