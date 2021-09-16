@@ -55,7 +55,7 @@ public class HotelReservationSystem {
 		return cheapestHotels;
 	}
 	
-	public Hotel bestCheapHotel(List<Hotel> cheapestHotels) {
+	public Hotel findBestCheapHotel(List<Hotel> cheapestHotels) {
 		
 		Hotel bestHotel=cheapestHotels.stream()
 						.sorted((hotel1, hotel2) -> String.valueOf(hotel2.getRating()).compareTo(String.valueOf(hotel1.getRating())))
