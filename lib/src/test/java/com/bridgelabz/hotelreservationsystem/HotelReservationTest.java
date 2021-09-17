@@ -35,7 +35,7 @@ public class HotelReservationTest {
     	
     }
     
-    @Test public void findCheapestHotel_differentHotelsWithDifferentRates_CheapestHotel() {
+    @Test public void findCheapestHotel_startDateAndEndDateOfHotelStay_CheapestHotelInGivenRane() {
     	listOfHotels.addHotel(hotel1);
     	listOfHotels.addHotel(hotel2);
     	listOfHotels.addHotel(hotel3);
@@ -50,7 +50,7 @@ public class HotelReservationTest {
     	
     }
   
-    @Test public void findBestCheapHotel_listOfCheapestHotels_highestRatedCheapHotel() {
+    @Test public void findBestCheapHotel_startDateAndEndDateAndCustomerType_highestRatedCheapHotelInGivenDateRange() {
     	listOfHotels.addHotel(hotel1);
     	listOfHotels.addHotel(hotel2);
     	listOfHotels.addHotel(hotel3);
@@ -63,7 +63,7 @@ public class HotelReservationTest {
     	
     }
     
-    @Test public void findBestHotel_listOfHotels_highestRatedHotel() {
+    @Test public void findBestHotel_startDateAndEndDateAndCustomerType_highestRatedHotelInGivenDateRange() {
     	listOfHotels.addHotel(hotel1);
     	listOfHotels.addHotel(hotel2);
     	listOfHotels.addHotel(hotel3);
@@ -76,7 +76,7 @@ public class HotelReservationTest {
     	
     }
     
-    @Test public void findBestCheapHotel_listOfHotels_cheapestHotelForRewardCustomer(){
+    @Test public void findBestCheapHotel_startDateAndEndDateAndCustomerType_cheapestHotelForRewardCustomer(){
     	listOfHotels.addHotel(hotel1);
     	listOfHotels.addHotel(hotel2);
     	listOfHotels.addHotel(hotel3);
