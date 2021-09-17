@@ -17,18 +17,27 @@ import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
+import org.junit.Before;
 
 public class HotelReservationTest {
-	
-	HotelReservationSystem listOfHotels=new HotelReservationSystem();
-	
-	Hotel hotel1=new Hotel("Lakewood", 110.0, 90.0, 80.0, 80.0, 3);
-	Hotel hotel2=new Hotel("Bridgewood", 150.0, 50.0, 110, 50, 4);
-	Hotel hotel3=new Hotel("Ridgewood", 220.0, 150.0, 100, 40, 5);
-	
+	static HotelReservationSystem listOfHotels=new HotelReservationSystem();
+	static Hotel hotel1;
+	static Hotel hotel2;
+	static Hotel hotel3;
+	@Before
+	public void initialize() {
+			
+		hotel1=new Hotel("Lakewood", 110.0, 90.0, 80.0, 80.0, 3);
+		hotel2=new Hotel("Bridgewood", 150.0, 50.0, 110, 50, 4);
+		hotel3=new Hotel("Ridgewood", 220.0, 150.0, 100, 40, 5);
+		
+		listOfHotels.addHotel(hotel1);
+    	listOfHotels.addHotel(hotel2);
+    	listOfHotels.addHotel(hotel3);
+	}
     
 	@Test public void addHotel_correctDetailsOfHotel_True(){
-    	HotelReservationSystem listOfHotels=new HotelReservationSystem();
+
     	Hotel hotel=new Hotel("Lakewood", 110.0, 90.0, 80.0, 80.0, 3);
     	boolean added=listOfHotels.addHotel(hotel);
     	Assert.assertEquals(added,true);
@@ -36,9 +45,6 @@ public class HotelReservationTest {
     }
     
     @Test public void findCheapestHotel_startDateAndEndDateOfHotelStay_CheapestHotelInGivenRane() {
-    	listOfHotels.addHotel(hotel1);
-    	listOfHotels.addHotel(hotel2);
-    	listOfHotels.addHotel(hotel3);
     	
     	LocalDate date1=LocalDate.of(2020, Month.SEPTEMBER, 11);
     	LocalDate date2=LocalDate.of(2020, Month.SEPTEMBER, 12);
@@ -51,9 +57,6 @@ public class HotelReservationTest {
     }
   
     @Test public void findBestCheapHotel_startDateAndEndDateAndCustomerType_highestRatedCheapHotelInGivenDateRange() {
-    	listOfHotels.addHotel(hotel1);
-    	listOfHotels.addHotel(hotel2);
-    	listOfHotels.addHotel(hotel3);
     	
     	LocalDate date1=LocalDate.of(2020, Month.SEPTEMBER, 11);
     	LocalDate date2=LocalDate.of(2020, Month.SEPTEMBER, 12);
@@ -64,9 +67,6 @@ public class HotelReservationTest {
     }
     
     @Test public void findBestHotel_startDateAndEndDateAndCustomerType_highestRatedHotelInGivenDateRange() {
-    	listOfHotels.addHotel(hotel1);
-    	listOfHotels.addHotel(hotel2);
-    	listOfHotels.addHotel(hotel3);
     	
     	LocalDate date1=LocalDate.of(2020, Month.SEPTEMBER, 11);
     	LocalDate date2=LocalDate.of(2020, Month.SEPTEMBER, 12);	
@@ -77,9 +77,6 @@ public class HotelReservationTest {
     }
     
     @Test public void findBestCheapHotel_startDateAndEndDateAndCustomerType_cheapestHotelForRewardCustomer(){
-    	listOfHotels.addHotel(hotel1);
-    	listOfHotels.addHotel(hotel2);
-    	listOfHotels.addHotel(hotel3);
     	
     	LocalDate date1=LocalDate.of(2020, Month.SEPTEMBER, 11);
     	LocalDate date2=LocalDate.of(2020, Month.SEPTEMBER, 12);
